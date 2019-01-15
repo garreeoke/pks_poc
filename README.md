@@ -24,12 +24,12 @@ $ indicates linux command line actions
 ## Setup Fly Command (CLI for concourse) ##
 
 1. Install fly cli (command line to interact with concourse)
-   - # curl -LO https://github.com/concourse/concourse/releases/download/v4.0.0/fly_linux_amd64
-   - # chmod +x fly_linux_amd64
-   - # mv fly_linux_amd64 /usr/local/bin/fly
-   - # fly --version
+   * $ curl -LO https://github.com/concourse/concourse/releases/download/v4.0.0/fly_linux_amd64
+   * $ chmod +x fly_linux_amd64
+   * $ mv fly_linux_amd64 /usr/local/bin/fly
+   * $ fly --version
        (4.0.0)
-   - # fly --target nsx-concourse login --concourse-url http://localhost:8080 -n main
+   * $ fly --target nsx-concourse login --concourse-url http://localhost:8080 -n main
 
 ## Setup NSX-T Pipeline ##
 -------------------
