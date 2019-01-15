@@ -43,31 +43,29 @@ $ indicates linux command line actions
 ### TEP to TEP Communication ###
 1. ssh in to two esx hosts that are prepped for NSX
 2. On each host:
-   i. List vmknics: esxcfg-vmknic -l
-   ii. Look for IP address of vmk10
-   iii. Ping vmk10 of other host: vmkping ++netstack=vxlan -I vmk10 x.x.x.x
-   iiii. Ping vmk10 of other host with MTU 1600: vmkping ++netstack=vxlan -d -s 1572 -I vmk10 x.x.x.x 
+   * List vmknics: $ esxcfg-vmknic -l
+   * Look for IP address of vmk10
+   * Ping vmk10 of other host: $ vmkping ++netstack=vxlan -I vmk10 x.x.x.x
+   * Ping vmk10 of other host with MTU 1600: $ vmkping ++netstack=vxlan -d -s 1572 -I vmk10 x.x.x.x 
 
 ### Within NSX Manager ###
 1. Login, go to Fabric from the left menu
-   i. Verify all hosts have deployment status of NSX Installed
+   * Verify all hosts have deployment status of NSX Installed
 2. Select Edges from the top menu
-   i. Deployment, Controller, and Manager status should be green
+   * Deployment, Controller, and Manager status should be green
 3. Select Transport Nodes from top menu
-   i. Configuration should be Succes and status should be up
+   * Configuration should be Succes and status should be up
 4. Select Networking/Routers from left menu
-   i. Verify routers
-      i. T0 routers
-      ii. T1 routes (usually pks-mgmt and pks-service)
+   * Verify routers creation of T0 and T1 routers (one T0 and two T1s)
 
 ### Test ingress/egress ###
 1. On a VM or ssh session not deployed on NSX logical switch (your desktop)
-   i. Ping the logical switch gateways.  In the nsx_pipeline_config.yml file, search for logical_switch_gw. Try pinging each one (Should be two).
+   * Ping the logical switch gateways.  In the nsx_pipeline_config.yml file, search for logical_switch_gw. Try pinging each one (Should be two).
 2. On the pks-client VM
-   i. Connect the unused nic to the pks-mgmt logical switch (Use last available IP in the PKS-MGMT block)
-   ii. Ping logical switch gateways (see above)
-   iii. Ping edge gateway vip (search for tier0_ha_vip: in params file)
-   iv. Ping physical switch gateway
+   * Connect the unused nic to the pks-mgmt logical switch (Use last available IP in the PKS-MGMT block)
+   * Ping logical switch gateways (see above)
+   * Ping edge gateway vip (search for tier0_ha_vip: in params file)
+   * Ping physical switch gateway
 
 # Post NSX-T install and verification #
 
@@ -82,75 +80,70 @@ $ indicates linux command line actions
    * https://network.pivotal.io/products/pivotal-container-service/
      - Download pks cli and kubectl for your linux
    * _PKS_
-   **# chmod +x pks-linux-amd64-x.x.x-build.x
-   ** # mv pks-linux-amd64-x.x.x-build.x /usr/local/bin/pks
-   ** # pks --version
+   ** $ chmod +x pks-linux-amd64-x.x.x-build.x
+   ** $ mv pks-linux-amd64-x.x.x-build.x /usr/local/bin/pks
+   ** $ pks --version
    *_Kubectl_
-   ** # chmod +x kubectl-linux-amd64-vx.x.x
-   ** mv kubectl-linux-amd64-vx.x.x /usr/local/bin/kubectl
-   ** # kubectl version
+   ** $ chmod +x kubectl-linux-amd64-vx.x.x
+   ** $ mv kubectl-linux-amd64-vx.x.x /usr/local/bin/kubectl
+   ** $ kubectl version
 2. Setup Uaac
-   * # apt update
-   * # apt upgrade
-   * # apt install ruby
-   * # apt install ruby-dev
-   * # apt install gcc
-   * # apt-get install build-essential g++
-   * # gem install cf-uaac
-   * # uaac version
+   * $ apt update
+   * $ apt upgrade
+   * $ apt install ruby
+   * $ apt install ruby-dev
+   * $ apt install gcc
+   * $ apt-get install build-essential g++
+   * $ gem install cf-uaac
+   * $ uaac version
    * Add /etc/hosts entry
-   **# PKS IP Address
-   **10.x.x.x pks.your_domain.com
-   * # uaac target https://uaa.mylab.com:8443 --skip-ssl-validation
-   *Get the secret 
+     10.x.x.x pks.your_domain.com
+   * $ uaac target https://uaa.mylab.com:8443 --skip-ssl-validation
+   * Get the secret 
    ** OpsMan->Pivotal Tile->Credentials->Pks Uaa Management Admin Client->Link to Credential
    ** Copy the secret value
-   * # uaac token client get admin -s copied_secret_value
+   * $ uaac token client get admin -s copied_secret_value
 _Steps 3 & 4 will not work until after PKS Pipeline is run_
 3. Login to PKS
-   - pks login -a pks.your_domain.com -u username -p password -k
-   - Various commands
-     - pks 
-     - pks clusters
+   * $ pks login -a pks.your_domain.com -u username -p password -k
 4. Create cluster, get kubernetes credentials, and use kubectl
-   - pks create-cluster k8s-1 --external-hostname k8s-1 --plan small --num-nodes 3
-   - pks cluster k8s-cluster-1
-     - copy ip addres of Kubernetes Master IP
-   - Add entry to /etc/hosts
-     - 10.x.x.x k8s-1
-   - pks get-credentials k8s-1
-   - kubectl get nodes
+   * $ pks create-cluster k8s-1 --external-hostname k8s-1 --plan small --num-nodes 3
+   * $ pks cluster k8s-1
+   * Copy ip addres of Kubernetes Master IP
+   * Add entry for k8s-1 in to /etc/hosts
+   * $ pks get-credentials k8s-1
+   * $kubectl get nodes
 
 ## Harbor Cert setup to enable pushing images to Harbor ##
 
 1. Setup docker cert to enable pushing images to harbor
-   * # cd /etc/docker
-   * # mkdir certs.d
-   * # cd certs.d
-   * # mkdir harbor.your_domain.com
-   * # cd harbor.your_domain.com
+   * $ cd /etc/docker
+   * $ mkdir certs.d
+   * $ cd certs.d
+   * $ mkdir harbor.your_domain.com
+   * $ cd harbor.your_domain.com
+   _COMPLETE AFTER PKS PIPELINE_
    * Login to opsman and download cert
    ** OpsMan->Settings(click on user name)->Advanced->Download root CA
    ** Copy contents of downloaded file
-   * # vi ca.crt
-   ** past copied content and save file
-   * # systemctl stop docker
-   * # systemctl start docker
+   ** past copied content and save file ca.crt
+   * $ systemctl stop docker
+   * $ systemctl start docker
    * Add entry in /etc/hosts for harbor
      10.x.x.x harbor.your_domain.com
    * Verify
-     # docker login harbor.your_domain.com
+   ** $# docker login harbor.your_domain.com
 
 
 ## Optional Bosh Setup (used for trouble-shooting bosh) ##
 
 1. Install bosh
-  * # cd /pks_install/binaries
-  * # wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.48-linux-amd64
-  * # chmod +x bosh-cli-x.x.x-linux-amd64
-  * # mv bosh-cli-x.x.x-linux-amd64 /usr/local/bin
-  * # bosh -v
-  * # cd /pks_install
+  * $ cd /pks_install/binaries
+  * $ wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.48-linux-amd64
+  * $ chmod +x bosh-cli-x.x.x-linux-amd64
+  * $ mv bosh-cli-x.x.x-linux-amd64 /usr/local/bin
+  * $ bosh -v
+  * $ cd /pks_install
   _Complete after PKS Pipeline_
   * Get bosh secret
     OpsMan->VMware Vsphere Tile->Credentials->Bosh Commandline Credentials->Link to Credential
@@ -167,6 +160,6 @@ _Steps 3 & 4 will not work until after PKS Pipeline is run_
       export BOSH_CA_CERT=/etc/docker/certs.d/harbor.your_domain.com/ or other file where cert is saved
   * source bosh.env
   * Commands to verify setup
-     - # bosh env
-     - # bosh vms
+     * $ bosh env
+     * $ bosh vms
 
