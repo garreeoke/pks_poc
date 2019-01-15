@@ -50,7 +50,7 @@ vm_disk_type: "thick"         # Disk type for BOSH provisioned VM. (thick|thin)
 # AZ configuration for Ops Director
 az_1_name: PKS_MGMT               # Logical name of availability zone. No spaces or special characters.
 az_1_cluster_name: CHANGE_ME      # Name of cluster in vCenter for PKS
-az_1_rp_name: PKS-MGMT            # Resource pool name in vCenter for PKS
+az_1_rp_name: PKS_MGMT            # Resource pool name in vCenter for PKS
 
 az_2_name: PKS_COMP               # Logical name of availability zone. No spaces or special characters.
 az_2_cluster_name: CHANGE_ME      # Name of cluster in vCenter for PKS
@@ -83,12 +83,12 @@ nsx_username: admin             # username for nsx access
 nsx_password: "VMware1!"        # password for nsx access
 
 # Additional network
-pks_network_name: "PKS_COMP"    # Logical switch for PKS-Services
-pks_vsphere_network: "PKS_COMP" # vCenter PKS-Services  network name for PKS - if empty quotes, then this network would be skipped
-pks_nw_cidr: CHANGE_ME          # PKS-COMP network, usually VIP network for POC, CIDR, ex: 10.0.0.0/22
-pks_excluded_range: CHANGE_ME   # PKS-Services network exclusion range
-pks_nw_dns: CHANGE_ME           # PKS-Services network DNS
-pks_nw_gateway: CHANGE_ME       # PKS-Services network Gateway
+pks_network_name: "PKS_COMP"    # Logical switch for PKS_Comp
+pks_vsphere_network: "PKS_COMP" # vCenter PKS_COMP  network name for PKS - if empty quotes, then this network would be skipped
+pks_nw_cidr: CHANGE_ME          # PKS_COMP network, usually VIP network for POC, CIDR, ex: 10.0.0.0/22
+pks_excluded_range: CHANGE_ME   # PKS_COMP network exclusion range
+pks_nw_dns: CHANGE_ME           # PKS_COMP network DNS
+pks_nw_gateway: CHANGE_ME       # PKS_COMP network Gateway
 pks_nw_azs: PKS_COMP            # Comma separated list of AZ's to be associated with this network
 is_service_network: true        # Required select service network option in Ops man true or false
 
@@ -130,7 +130,7 @@ pks_tile_vm_folder: pks_vms                 # Folder where PKS control plane vm 
 pks_tile_singleton_job_az: PKS_MGMT           # Check
 pks_tile_nw_azs: PKS_MGMT
 pks_tile_deployment_network_name: PKS_MGMT      # Can be any network created already, default: INFRASTRUCTURE
-pks_tile_cluster_service_network_name: PKS-COMP # Should match the PKS-Services network created already
+pks_tile_cluster_service_network_name: PKS_COMP # Should match the PKS_COMP network created already
 
 # ALERT - The underlying Edge instances should be large, 8 vcpus.
 # Otherwise the pks-nsx-t-precheck errrand would fail.
