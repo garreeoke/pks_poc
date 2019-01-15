@@ -101,8 +101,8 @@ $ indicates linux command line actions
     * OpsMan->Pivotal Tile->Credentials->Pks Uaa Management Admin Client->Link to Credential
     * Copy the secret value
    * $ uaac token client get admin -s copied_secret_value
-   
-_Steps 3 & 4 will not work until after PKS Pipeline is run_
+
+__Steps 3 & 4 will not work until after PKS Pipeline is run__
 3. Login to PKS
    * $ pks login -a pks.your_domain.com -u username -p password -k
 4. Create cluster, get kubernetes credentials, and use kubectl
@@ -121,18 +121,18 @@ _Steps 3 & 4 will not work until after PKS Pipeline is run_
    * $ cd certs.d
    * $ mkdir harbor.your_domain.com
    * $ cd harbor.your_domain.com
+
    _COMPLETE AFTER PKS PIPELINE_
    * Login to opsman and download cert
-   ** OpsMan->Settings(click on user name)->Advanced->Download root CA
-   ** Copy contents of downloaded file
-   ** past copied content and save file ca.crt
+    * OpsMan->Settings(click on user name)->Advanced->Download root CA
+    * Copy contents of downloaded file
+    * past copied content and save file ca.crt
    * $ systemctl stop docker
    * $ systemctl start docker
    * Add entry in /etc/hosts for harbor
-     10.x.x.x harbor.your_domain.com
+      * 10.x.x.x harbor.your_domain.com
    * Verify
-   ** $# docker login harbor.your_domain.com
-
+    * $ docker login harbor.your_domain.com
 
 ## Optional Bosh Setup (used for trouble-shooting bosh) ##
 
