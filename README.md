@@ -76,15 +76,15 @@ $ indicates linux command line actions
 
 1. Downlowd & install cli binaris from Pivotal, they will need to be copied to the Ubuntu VM
    * https://network.pivotal.io/products/pivotal-container-service/
-     - Download pks cli and kubectl for your linux
+     * Download pks cli and kubectl for your linux
    * _PKS_
-   ** $ chmod +x pks-linux-amd64-x.x.x-build.x
-   ** $ mv pks-linux-amd64-x.x.x-build.x /usr/local/bin/pks
-   ** $ pks --version
+    ** $ chmod +x pks-linux-amd64-x.x.x-build.x
+    ** $ mv pks-linux-amd64-x.x.x-build.x /usr/local/bin/pks
+    ** $ pks --version
    *_Kubectl_
-   ** $ chmod +x kubectl-linux-amd64-vx.x.x
-   ** $ mv kubectl-linux-amd64-vx.x.x /usr/local/bin/kubectl
-   ** $ kubectl version
+    ** $ chmod +x kubectl-linux-amd64-vx.x.x
+    ** $ mv kubectl-linux-amd64-vx.x.x /usr/local/bin/kubectl
+    ** $ kubectl version
 2. Setup Uaac
    * $ apt update
    * $ apt upgrade
@@ -95,12 +95,13 @@ $ indicates linux command line actions
    * $ gem install cf-uaac
    * $ uaac version
    * Add /etc/hosts entry
-     10.x.x.x pks.your_domain.com
+      * 10.x.x.x pks.your_domain.com
    * $ uaac target https://uaa.mylab.com:8443 --skip-ssl-validation
    * Get the secret 
-   ** OpsMan->Pivotal Tile->Credentials->Pks Uaa Management Admin Client->Link to Credential
-   ** Copy the secret value
+    * OpsMan->Pivotal Tile->Credentials->Pks Uaa Management Admin Client->Link to Credential
+    * Copy the secret value
    * $ uaac token client get admin -s copied_secret_value
+   
 _Steps 3 & 4 will not work until after PKS Pipeline is run_
 3. Login to PKS
    * $ pks login -a pks.your_domain.com -u username -p password -k
