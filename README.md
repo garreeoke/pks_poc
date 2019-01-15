@@ -32,7 +32,7 @@ $ indicates linux command line actions
    * $ fly --target nsx-concourse login --concourse-url http://localhost:8080 -n main
 
 ## Setup NSX-T Pipeline ##
-1. Download and Configure NSX parameters file: nsx_pipeline_config.yml
+1. Modify nsx_pipeline_config.yml (either from this repo or one sent to you)
    * Search for CHANGE_ME and modify the file for your environment
    * Place file in /home/concourse directory on the pks-client VM
 2. Follow instructions at: https://github.com/vmware/nsx-t-datacenter-ci-pipelines/wiki/Deploying-Concourse-using-the-Docker-Imag
