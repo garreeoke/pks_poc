@@ -122,7 +122,7 @@ __Steps 3 & 4 will not work until after PKS Pipeline is run__
    * $ mkdir harbor.your_domain.com
    * $ cd harbor.your_domain.com
 
-   _COMPLETE AFTER PKS PIPELINE_
+   __COMPLETE AFTER PKS PIPELINE__
    * Login to opsman and download cert
     * OpsMan->Settings(click on user name)->Advanced->Download root CA
     * Copy contents of downloaded file
@@ -143,8 +143,8 @@ __Steps 3 & 4 will not work until after PKS Pipeline is run__
   * $ mv bosh-cli-x.x.x-linux-amd64 /usr/local/bin
   * $ bosh -v
   * $ cd /pks_install
-  
-  _Complete after PKS Pipeline_
+
+  __Complete after PKS Pipeline__
   * Get bosh secret
     OpsMan->VMware Vsphere Tile->Credentials->Bosh Commandline Credentials->Link to Credential
     Copy secret value
