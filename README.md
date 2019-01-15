@@ -143,6 +143,7 @@ __Steps 3 & 4 will not work until after PKS Pipeline is run__
   * $ mv bosh-cli-x.x.x-linux-amd64 /usr/local/bin
   * $ bosh -v
   * $ cd /pks_install
+  
   _Complete after PKS Pipeline_
   * Get bosh secret
     OpsMan->VMware Vsphere Tile->Credentials->Bosh Commandline Credentials->Link to Credential
