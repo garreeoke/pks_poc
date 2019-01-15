@@ -32,7 +32,6 @@ $ indicates linux command line actions
    * $ fly --target nsx-concourse login --concourse-url http://localhost:8080 -n main
 
 ## Setup NSX-T Pipeline ##
--------------------
 1. Download and Configure NSX parameters file: nsx_pipeline_config.yml
    * Search for CHANGE_ME and modify the file for your environment
    * Place file in /home/concourse directory on the pks-client VM
@@ -70,7 +69,6 @@ $ indicates linux command line actions
 # Post NSX-T install and verification #
 
 ## PKS Pipeline ##
-----------------------
 1. To be completed with onsite POC or further instructions
 
 
