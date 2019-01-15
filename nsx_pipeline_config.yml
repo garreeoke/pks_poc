@@ -132,6 +132,7 @@ nsx_t_external_ip_pool_spec: |
     start: CHANGE_ME    # Start of range for routable VIP pool, should not include gateway
     end: CHANGE_ME      # End of range for routable VIP pool
 
+# Leave unchanged unless PKS_MGMT network is non-routable
 nsx_t_nat_rules_spec: |
   nat_rules:
   # Sample entry for  PKS-Infra network, leave one uncommented that should be deleted
@@ -194,4 +195,5 @@ nsx_t_lbr_spec: |
   
 nsx_t_ha_switching_profile_spec: |
   ha_switching_profiles:
+
 
