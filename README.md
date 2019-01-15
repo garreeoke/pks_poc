@@ -11,14 +11,14 @@ $ indicates linux command line actions
 ## PKS-Client VM ##
 
 1. Download & setup Ubuntu
-   - Download Ubuntu 16.04: http://cdimage.ubuntu.com/releases/16.04/release/
-   - Create a VM and install ubuntu using all defaults
-     - Set VM name to pks-client
-     - Create VM with two nics, the second one can be initially disconnected
-     - Concourse could take up some space.  100-200GB of disk should be suffice.
-   - Login to VM with credentials you created
-     - May have to use "sudo" for some commands below.
-     - If you are able to unlock root: https://askubuntu.com/questions/44418/how-to-enable-root-login
+   * Download Ubuntu 16.04: http://cdimage.ubuntu.com/releases/16.04/release/
+   * Create a VM and install ubuntu using all defaults
+      * Set VM name to pks-client
+      * Create VM with two nics, the second one can be initially disconnected
+      * Concourse could take up some space.  100-200GB of disk should be suffice.
+   * Login to VM with credentials you created
+      * May have to use "sudo" for some commands below.
+      * If you are able to unlock root: https://askubuntu.com/questions/44418/how-to-enable-root-login
 
 
 ## Setup Fly Command (CLI for concourse) ##
