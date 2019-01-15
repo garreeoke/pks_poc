@@ -1,12 +1,10 @@
 # General #
 
-For use in setting up automation for PKS/NSX-T install
+For use in setting up automated deployment for a PKS/NSX-T POC.  
 
-1. Install ubuntu client VM
-2. Install NSX-T docker
-3. Setup additional PKS client items
-
-$ indicates linux command line actions
+* For use in a guided POC with a VMware PKS Engineer
+* These instructions are not supported by VMware or Pivotal
+* If you have questions or requests, feel free to post an issue.
 
 ## PKS-Client VM ##
 
