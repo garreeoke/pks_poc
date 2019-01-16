@@ -69,7 +69,7 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
 ## PKS Pipeline ##
 1. Modify pks-params.yml
 2. Download pks pipeline from github
-  1. cd /home/concourse
+    1. cd /home/concourse
   2. copy pks-param.yml to /home/concourse
   3. git clone https://github.com/nvpnathan/nsx-t-ci-pipeline.git
 3. Register pipeline
