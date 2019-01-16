@@ -78,7 +78,7 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
     * fly -t nsx-concourse unpause-pipeline -p pks-install
 4. Login to concourse, select the pks-install pipeline from the left menu
 5. Run the pipeline
-  * First time you run this, each box will run automatically.  Subsequent runs will require clicking on each box individually
+    * First time you run this, each box will run automatically.  Subsequent runs will require clicking on each box individually
 
 
 ## PKS Client Software ##
