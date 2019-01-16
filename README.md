@@ -33,7 +33,7 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
 1. Modify nsx_pipeline_config.yml (either from this repo or one sent to you)
    * Search for CHANGE_ME and modify the file for your environment
    * Place file in /home/concourse directory on the pks-client VM
-2. Follow instructions at: https://github.com/vmware/nsx-t-datacenter-ci-pipelines/wiki/Deploying-Concourse-using-the-Docker-Imag
+2. Follow instructions at: https://github.com/vmware/nsx-t-datacenter-ci-pipelines/wiki/Deploying-Concourse-using-the-Docker-Image
 
 ## Verify NSX-T ##
 
