@@ -90,8 +90,8 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
       * $ chmod +x pks-linux-amd64-x.x.x-build.x
       * $ mv pks-linux-amd64-x.x.x-build.x /usr/local/bin/pks
       * $ pks --version
-      
-   *_Kubectl_
+
+   * _Kubectl_
       * $ chmod +x kubectl-linux-amd64-vx.x.x
       * $ mv kubectl-linux-amd64-vx.x.x /usr/local/bin/kubectl
       * $ kubectl version
