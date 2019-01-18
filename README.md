@@ -74,7 +74,7 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
     * git clone https://github.com/nvpnathan/nsx-t-ci-pipeline.git
 3. Register pipeline
     * fly --target nsx-concourse login --concourse-url http://localhost:8080 -n main
-    * fly -t nsx-concourse set-pipeline -p pks-install -c nsx-t-ci-pipeline/pipelines -l ./pks-params.yml
+    * fly -t nsx-concourse set-pipeline -p pks-install -c nsx-t-ci-pipeline/pipelines/install-pks-pipeline.yml -l ./pks-params.yml
     * fly -t nsx-concourse unpause-pipeline -p pks-install
 4. Login to concourse, select the pks-install pipeline from the left menu
 5. Run the pipeline
