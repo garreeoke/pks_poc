@@ -69,6 +69,9 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
 
 # Post NSX-T install and verification #
 
+## vSphere Resource Pools
+* Create two resource pools on vSphere cluster where PKS & K8s will be running (PKS_MGMT and PKS_K8S)
+
 ## PKS Pipeline ##
 1. Modify pks-params.yml
 2. Download pks pipeline from github
