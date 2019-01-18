@@ -101,7 +101,7 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
       * $ chmod +x kubectl-linux-amd64-vx.x.x
       * $ mv kubectl-linux-amd64-vx.x.x /usr/local/bin/kubectl
       * $ kubectl version
-2. Setup Uaac
+2. Setup Uaac (Optional)
    * $ apt update
    * $ apt upgrade
    * $ apt install ruby
@@ -119,6 +119,7 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
    * $ uaac token client get admin -s copied_secret_value
 
 __Steps 3 & 4 will not work until after PKS Pipeline is run__
+
 3. Login to PKS
    * $ pks login -a pks.your_domain.com -u [user] -p [password] -k
     * Change password to the value of user/password to values pks_tile_cli_username:/pks_tile_cli_username: in the pks-params.yml file
