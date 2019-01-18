@@ -17,6 +17,7 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
    * Login to VM with credentials you created
       * May have to use "sudo" for some commands below.
       * If you are able to unlock root: https://askubuntu.com/questions/44418/how-to-enable-root-login
+2. VM needs internet access to run the pipelines.
 
 
 ## Setup Fly Command (CLI for concourse) ##
