@@ -64,6 +64,8 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
    * Ping edge gateway vip (search for tier0_ha_vip: in params file)
    * Ping physical switch gateway
 
+[Read this for a good article on what is configured for NSX-T](http://keithlee.ie/2018/11/24/pks-nsx-t-home-lab-part-8-configure-nsx-t/)
+
 # Post NSX-T install and verification #
 
 ## PKS Pipeline ##
