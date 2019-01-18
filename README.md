@@ -122,7 +122,7 @@ __Steps 3 & 4 will not work until after PKS Pipeline is run__
 
 3. Login to PKS
    * $ pks login -a pks.your_domain.com -u [user] -p [password] -k
-    * Change password to the value of user/password to values pks_tile_cli_username:/pks_tile_cli_username: in the pks-params.yml file
+    * Change password to the value of user/password to values in fields pks_tile_cli_username:/pks_tile_cli_username: in the pks-params.yml file
 4. Create cluster, get kubernetes credentials, and use kubectl
    * $ pks create-cluster k8s-1 --external-hostname k8s-1 --plan small --num-nodes 3
    * $ pks cluster k8s-1
