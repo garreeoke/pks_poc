@@ -86,10 +86,15 @@ vc_uplink_network_for_edge: "CHANGE_ME"     # Edge uplink port group in vsphere:
 vc_overlay_network_for_edge: "CHANGE_ME"    # TEP portgroup in vsphere (vSS or VDS .. must be set to higher >=1600)
 vc_management_network_for_edge: "CHANGE_ME" # Management port group
 
-## ESX hosts
-# By vsphere 
-clusters_to_install_nsx: Development  # Comma seprated list of clusters where all hosts will be prepared for NSX
-per_cluster_vlans: 0                  # Comma seprated, order of VLANs applied same as order of clusters
+## Import ESX hosts for NSX install 
+# By auto_cluster (bring in all hosts from specified clusters)
+# Can do multiple (comma separated)
+# If multiple, each one matches up with the other
+# I.e: 
+#     clusters_to_install_nsx: cluster1,cluster2
+#     per_cluster_vlans: 1001,1001
+clusters_to_install_nsx: CHANGE_ME  # Name of cluster to bring in all hosts for NSX
+per_cluster_vlans: 0                # TEP VLAN used for the uplink profile
 
 # By host option, leave blank if doing by vcenter
 esx_ips: ""             # additional esx hosts, if any, to be individually installed
