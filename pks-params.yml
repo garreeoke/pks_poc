@@ -52,9 +52,9 @@ az_1_name: PKS_MGMT               # Logical name of availability zone. No spaces
 az_1_cluster_name: CHANGE_ME      # Name of cluster in vCenter for PKS
 az_1_rp_name: PKS_MGMT            # Resource pool name in vCenter for PKS
 
-az_2_name: PKS_COMP               # Logical name of availability zone. No spaces or special characters.
+az_2_name: PKS_K8S               # Logical name of availability zone. No spaces or special characters.
 az_2_cluster_name: CHANGE_ME      # Name of cluster in vCenter for PKS
-az_2_rp_name: PKS_COMP            # Resource pool name in vCenter for PKS
+az_2_rp_name: PKS_K8S            # Resource pool name in vCenter for PKS
 
 # Leave blank unless creating more than two resource pools.
 az_3_name:                    # Logical name of availability zone. No spaces or special characters.
@@ -83,13 +83,13 @@ nsx_username: admin             # username for nsx access
 nsx_password: "VMware1!"        # password for nsx access
 
 # Additional network
-pks_network_name: "PKS_COMP"    # Logical switch for PKS_Comp
-pks_vsphere_network: "PKS_COMP" # vCenter PKS_COMP  network name for PKS - if empty quotes, then this network would be skipped
-pks_nw_cidr: CHANGE_ME          # PKS_COMP network, usually VIP network for POC, CIDR, ex: 10.0.0.0/22
-pks_excluded_range: CHANGE_ME   # PKS_COMP network exclusion range
-pks_nw_dns: CHANGE_ME           # PKS_COMP network DNS
-pks_nw_gateway: CHANGE_ME       # PKS_COMP network Gateway
-pks_nw_azs: PKS_COMP            # Comma separated list of AZ's to be associated with this network
+pks_network_name: "PKS_K8S"    # Logical switch for PKS_K8S
+pks_vsphere_network: "PKS_K8S" # vCenter PKS_K8S  network name for PKS - if empty quotes, then this network would be skipped
+pks_nw_cidr: CHANGE_ME          # PKS_K8S network, usually VIP network for POC, CIDR, ex: 10.0.0.0/22
+pks_excluded_range: CHANGE_ME   # PKS_K8S network exclusion range
+pks_nw_dns: CHANGE_ME           # PKS_K8S network DNS
+pks_nw_gateway: CHANGE_ME       # PKS_K8S network Gateway
+pks_nw_azs: PKS_K8S            # Comma separated list of AZ's to be associated with this network
 is_service_network: true        # Required select service network option in Ops man true or false
 
 ## PKS Tile section ##
@@ -130,7 +130,7 @@ pks_tile_vm_folder: pks_vms                 # Folder where PKS control plane vm 
 pks_tile_singleton_job_az: PKS_MGMT           # Check
 pks_tile_nw_azs: PKS_MGMT
 pks_tile_deployment_network_name: PKS_MGMT      # Can be any network created already, default: INFRASTRUCTURE
-pks_tile_cluster_service_network_name: PKS_COMP # Should match the PKS_COMP network created already
+pks_tile_cluster_service_network_name: PKS_K8S # Should match the PKS_K8S network created already
 
 # ALERT - The underlying Edge instances should be large, 8 vcpus.
 # Otherwise the pks-nsx-t-precheck errrand would fail.
@@ -208,7 +208,7 @@ pks_tile_plan_details:
     description: "Small plan"
     # AZ can be only a single value for PKS v1.0
     # There can be a comma separated list for PKS v1.1 which supports multiple AZs
-    az_placement: PKS_COMP  # Specify the AZ in which the cluster will be created, single for PKS v1.0
+    az_placement: PKS_K8S  # Specify the AZ in which the cluster will be created, single for PKS v1.0
     master_vm_type: medium
     worker_vm_type: medium
     persistent_disk_type: "10240" # Used in PKS 1.0
@@ -233,7 +233,7 @@ pks_tile_plan_details:
     description: "Medium plan"
     # AZ can be only a single value for PKS v1.0
     # There can be a comma separated list for PKS v1.1 which supports multiple AZs
-    az_placement: PKS_COMP  # Specify the AZ in which the cluster will be created, single for PKS v1.0
+    az_placement: PKS_K8S  # Specify the AZ in which the cluster will be created, single for PKS v1.0
     master_vm_type: medium
     worker_vm_type: medium
     persistent_disk_type: "10240" # Used in PKS 1.0
