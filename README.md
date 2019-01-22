@@ -6,6 +6,7 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
 * These instructions are not supported by VMware or Pivotal
 * If you have questions or requests, feel free to post an issue.
 
+
 ## PKS-Client VM ##
 
 1. Download & setup Ubuntu
@@ -29,6 +30,17 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
    * $ fly --version
        (4.0.0)
    * $ fly --target nsx-concourse login --concourse-url http://localhost:8080 -n main
+
+## DNS Entries ##
+* [nsxt-manager].domain.com - [ip from managment network]
+  * Should match values in nsx_pipeline_config.yml
+    * nsx_manager_assigned_hostname:+dns_domain:
+* [opsmgr].domain.com - [Second IP address is the PKS-MGMT network, usually .2]
+  * Should match values in pks-params.yml
+    * opsman_domain_or_ip_address: [FQDN]
+    * om_ip: IP
+* [pks].yourdomain.com - [Fourth IP address in the PKS-MGMT network, usually .4]
+* [harbor].yourdomain.com - [Fifth IP address in the PKS-MGMT network, usually .5]
 
 ## Setup NSX-T Pipeline ##
 1. Modify nsx_pipeline_config.yml (either from this repo or one sent to you)

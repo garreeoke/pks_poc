@@ -109,14 +109,14 @@ esx_available_vmnic: "CHANGE_ME" # comma separated physical NICs.  Usually vmnic
 nsx_t_t1router_logical_switches_spec: |
   t1_routers:
   # Add additional T1 Routers or collapse switches into same T1 Router as needed
-  - name: T1_PKS_MGMT
+  - name: T1-PKS-MGMT
     switches:
-    - name: PKS_MGMT
-      logical_switch_gw: CHANGE_ME # First address in the PKS_MGMT network, usually .1
-      subnet_mask: CHANGE_ME       # Mask for the PKS_MGMT network, i.e - 26
-  - name: T1_PKS_K8S
+    - name: LS-PKS-MGMT
+      logical_switch_gw: CHANGE_ME # First address in the PKS-MGMT network, usually .1
+      subnet_mask: CHANGE_ME       # Mask for the PKS-MGMT network, i.e - 26
+  - name: T1-PKS-K8S
     switches:
-    - name: PKS_K8S
+    - name: LS-PKS-K8S
       logical_switch_gw: CHANGE_ME # Gateway for the VIP netowork
       subnet_mask: CHANGE_ME       # Mask for the VIP network, i.e - 24
 
@@ -137,7 +137,7 @@ nsx_t_external_ip_pool_spec: |
     start: CHANGE_ME    # Start of range for routable VIP pool, should not include gateway
     end: CHANGE_ME      # End of range for routable VIP pool
 
-# Leave unchanged unless PKS_MGMT network is non-routable
+# Leave unchanged unless PKS-MGMT network is non-routable
 nsx_t_nat_rules_spec: |
   nat_rules:
   # Sample entry for  PKS-MGMT network, leave one uncommented that should be deleted
