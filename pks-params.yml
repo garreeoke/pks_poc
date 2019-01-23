@@ -5,7 +5,7 @@ pivnet_token: CHANGE_ME              # Pivnet token for downloading resources fr
 opsman_major_minor_version: ^2\.3.*$ # Ops Manager minor version to use
 pks_major_minor_version: ^1\.2.*$    # Major/Minor PKS version ... change if needed
 
-# vCenter configuration
+### vCenter configuration
 vcenter_host: CHANGE_ME         # vCenter host or IP
 vcenter_usr: CHANGE)ME          # vCenter username. If user is tied to a domain, then escape the \, example `domain\\user`
 vcenter_pwd: "VMware1!"         # vCenter password
@@ -13,7 +13,7 @@ vcenter_data_center: CHANGE_ME  # vCenter datacenter where PKS will be installed
 vcenter_insecure: 1             # vCenter skip TLS cert validation; enter `1` to disable cert verification, `0` to enable verification
 vcenter_ca_cert:                # vCenter CA cert at the API endpoint; enter a value if `vcenter_insecure: 0`
 
-# Ops Manager VM configuration
+### Ops Manager VM configuration
 om_vm_host:                             # Optional - vCenter host to deploy Ops Manager in
 om_data_store: CHANGE_ME                # vCenter datastore name to deploy Ops Manager in
 opsman_domain_or_ip_address: CHANGE_ME  # FQDN to access Ops Manager without protocol (will use https), ex: opsmgr.example.com
@@ -32,6 +32,8 @@ opsman_disk_type: "thin"                # Disk type for Ops Manager VM (thick|th
 om_vm_power_state: true                 # Whether to power on Ops Manager VM after creation
 om_vm_folder:                           # Leave it blank
 
+
+### BOSH TILE ###
 # vCenter Cluster or Resource Pool to use to deploy Ops Manager.
 # Create resource pools PKS_MGMT in vcenter prior to running pipeline
 om_resource_pool: PKS_MGMT  # Resource pool for PKS_MGMT vms 
@@ -47,7 +49,7 @@ bosh_disk_path: "pks_disk"                # vSphere datastore folder (such as pc
 trusted_certificates:         # Trusted certificates to be deployed along with all VM's provisioned by BOSH
 vm_disk_type: "thick"         # Disk type for BOSH provisioned VM. (thick|thin)
 
-# AZ configuration for Ops Director
+# AZ Config
 az_1_name: PKS_MGMT               # Logical name of availability zone. No spaces or special characters.
 az_1_cluster_name: CHANGE_ME      # Name of cluster in vCenter for PKS
 az_1_rp_name: PKS_MGMT            # Resource pool name in vCenter for PKS
@@ -65,9 +67,8 @@ ntp_servers: CHANGE_ME               # Comma-separated list of NTP servers to us
 enable_vm_resurrector: true   # Whether to enable BOSH VM resurrector
 max_threads: 30               # Max threads count for deploying VMs
 
-# Network configuration for Ops Director
+# Network configuration
 icmp_checks_enabled: false     # Enable or disable ICMP checks
-
 infra_network_name: "PKS_MGMT"
 infra_vsphere_network: "LS_PKS_MGMT"           # PKS_MGMT logical switch name as seen in vsphere
 infra_nw_cidr: CHANGE_ME                    # PKS_MGMT logical network CIDR, ex: 10.0.0.0/22
@@ -92,9 +93,7 @@ pks_nw_gateway: CHANGE_ME       # PKS_K8S network Gateway
 pks_nw_azs: PKS_K8S            # Comma separated list of AZ's to be associated with this network
 is_service_network: true        # Required select service network option in Ops man true or false
 
-## PKS Tile section ##
-######################
-
+### PKS Tile ###
 # Create DNS entry in the loadbalancer and DNAT/SNAT entries for following
 pks_tile_system_domain: CHANGE_ME   # Domain name only i.e - vmware.com
 # Just provide the prefix like uaa or api for domain_prefix.
@@ -105,7 +104,6 @@ pks_tile_uaa_domain_prefix: pks-api # Would be used for UAA as ${prefix}.${pks_s
 # External IP that would be routable via the NSX T0 Router and mapped to ${pks_tile_uaa_domain_prefix}.${pks_system_domain}
 # Only required if PKS-MGMT is non routable
 pks_tile_uaa_system_domain_ip: CHANGE_ME #Address from the PKS_MGMT network, usually in sequential access of bosh
-
 pks_tile_cli_username: pksadmin
 pks_tile_cli_password: "VMware1!"
 pks_tile_cli_useremail: CHANGE_ME # pksadmin@yourdomain.com
@@ -266,7 +264,8 @@ pks_tile_plan_details:
 # pks_tile_webserver: http://101.101.101.101:8080      # EDIT ME
 # pksv11_tile: pivotal-container-service-1.1.0.pivotal # EDIT ME
 
-######## PKS tile-specific parameters
+### HARBOR ###
+# tile-specific parameters
 product_name: harbor-container-registry  # do not change
 product_slug: harbor-container-registry  # do not change
 harbor_product_version: ^1\.7\..*$  # PKS tile version to install
@@ -275,8 +274,7 @@ product_globs: "*.pivotal"
 # Note: check companion "pks_vault_params.sh" script for automated credentials
 #       creation for this pipeline in either Vault or CredHub.
 
-
-######## AZs and Networks configuration for the tile
+# AZs and Networks configuration
 harbor_networks: |
   network:
     name: PKS-MGMT
@@ -286,7 +284,7 @@ harbor_networks: |
   singleton_availability_zone:
     name: PKS-MGMT
 harbor_tile_app_domain: CHANGE_ME # EDIT ME - Make sure this matches the property specified in the block below
-harbor_tile_app_domain_ip: CHANGE_ME
+harbor_tile_app_domain_ip: CHANGE_ME # Leave blank if PKS-MGMT is routed?
 
 harbor_properties: |
   ######## General
@@ -401,11 +399,11 @@ harbor_properties: |
   ### Determine if include Notary in the deployment to support content trust (flag: true or false)
   .properties.with_notary:
     value: true
-######## Errands to disable
+# Errands to disable
 harbor_errands_to_disable: ""
   # smoke-testing, uaa-deregistration
 
-######## Resources
+# Resources
 harbor_resources: |
   harbor-app:
     instance_type:
