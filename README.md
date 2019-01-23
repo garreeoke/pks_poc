@@ -174,29 +174,29 @@ __Steps 3 & 4 will not work until after PKS Pipeline is run__
 ## Optional Bosh Setup (used for trouble-shooting bosh) ##
 
 1. Install bosh
-  * $ cd /pks_install/binaries
-  * $ wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.48-linux-amd64
-  * $ chmod +x bosh-cli-x.x.x-linux-amd64
-  * $ mv bosh-cli-x.x.x-linux-amd64 /usr/local/bin
-  * $ bosh -v
-  * $ cd /pks_install
+    * $ cd /pks_install/binaries
+    * $ wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.48-linux-amd64
+    * $ chmod +x bosh-cli-x.x.x-linux-amd64
+    * $ mv bosh-cli-x.x.x-linux-amd64 /usr/local/bin
+    * $ bosh -v
+    * $ cd /pks_install
 
   __Complete after PKS Pipeline__
-  * Get bosh secret
+    * Get bosh secret
     OpsMan->VMware Vsphere Tile->Credentials->Bosh Commandline Credentials->Link to Credential
     Copy secret value
-  * Login to opsman and download cert (If haven't done already)
+    * Login to opsman and download cert (If haven't done already)
     OpsMan->Settings(click on user name)->Advanced->Download root CA
     Copy contents of downloaded file
     Save cert to file on linux box
-  * Create bosh env file
+    * Create bosh env file
     vi bosh.env
       export BOSH_ENVIRONMENT=ip_address_for_bosh
       export BOSH_CLIENT=ops_manager
       export BOSH_CLIENT_SECRET= secret_value_from_above
       export BOSH_CA_CERT=/etc/docker/certs.d/harbor.your_domain.com/ or other file where cert is saved
-  * source bosh.env
-  * Commands to verify setup
-     * $ bosh env
-     * $ bosh vms
+    * source bosh.env
+    * Commands to verify setup
+      * $ bosh env
+      * $ bosh vms
 
