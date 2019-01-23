@@ -182,9 +182,9 @@ __Steps 3 & 4 will not work until after PKS Pipeline is run__
     * $ cd /pks_install
 
   __Complete after PKS Pipeline__
-  
+
     * Get bosh secret
-    OpsMan->VMware Vsphere Tile->Credentials->Bosh Commandline Credentials->Link to Credential
+      * OpsMan->VMware Vsphere Tile->Credentials->Bosh Commandline Credentials->Link to Credential
     Copy secret value
     * Login to opsman and download cert (If haven't done already)
     OpsMan->Settings(click on user name)->Advanced->Download root CA
