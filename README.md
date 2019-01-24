@@ -175,7 +175,7 @@ __Steps 3 & 4 will not work until after PKS Pipeline is run__
 
 1. Install bosh
     * $ cd /pks_install/binaries
-    * $ wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.48-linux-amd64
+    * $ https://github.com/cloudfoundry/bosh-cli/releases
     * $ chmod +x bosh-cli-x.x.x-linux-amd64
     * $ mv bosh-cli-x.x.x-linux-amd64 /usr/local/bin
     * $ bosh -v
