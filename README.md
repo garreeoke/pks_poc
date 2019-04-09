@@ -6,14 +6,23 @@ Guidelines for setting up a PKS POC
 
 ## Steps ##
 1. [Review networking requirements and setup](https://github.com/garreeoke/pks_poc/blob/master/networking.md)
-2. Review needed DNS entries
+2. [Review needed DNS entries](https://github.com/garreeoke/pks_poc#dns-entries)
 3. Prepare the PKS-Client VM
 4. Setup, run, and verify the NSX-T Concourse pipeline to install NSX-T
-5. Verify NSX-T Install
-6. Create resources pools in vSphere
-7. Setup and run the PKS Concourse pipeline to install PKS
-8. Use PKS
+5. Create resources pools in vSphere
+6. Setup and run the PKS Concourse pipeline to install PKS
+7. Use PKS
 
+## DNS Entries ##
+* [nsxt-manager].domain.com - [ip from managment network]
+  * Should match values in nsx_pipeline_config.yml
+    * nsx_manager_assigned_hostname:+dns_domain:
+* [opsmgr].domain.com - [Second IP address is the PKS-MGMT network, usually .2]
+  * Should match values in pks-params.yml
+    * opsman_domain_or_ip_address: [FQDN]
+    * om_ip: IP
+* [pks].yourdomain.com - [Fourth IP address in the PKS-MGMT network, usually .4]
+* [harbor].yourdomain.com - [Fifth IP address in the PKS-MGMT network, usually .5]
 
 ## PKS-Client VM ##
 
@@ -39,16 +48,7 @@ Guidelines for setting up a PKS POC
        (4.0.0)
    * $ fly --target nsx-concourse login --concourse-url http://localhost:8080 -n main
 
-## DNS Entries ##
-* [nsxt-manager].domain.com - [ip from managment network]
-  * Should match values in nsx_pipeline_config.yml
-    * nsx_manager_assigned_hostname:+dns_domain:
-* [opsmgr].domain.com - [Second IP address is the PKS-MGMT network, usually .2]
-  * Should match values in pks-params.yml
-    * opsman_domain_or_ip_address: [FQDN]
-    * om_ip: IP
-* [pks].yourdomain.com - [Fourth IP address in the PKS-MGMT network, usually .4]
-* [harbor].yourdomain.com - [Fifth IP address in the PKS-MGMT network, usually .5]
+
 
 ## Setup NSX-T Pipeline ##
 1. Modify nsx_pipeline_config.yml (either from this repo or one sent to you)
