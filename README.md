@@ -1,10 +1,18 @@
-# General #
+# PKS_POC #
 
-For use in setting up automated deployment for a PKS/NSX-T POC.  
+Guidelines for setting up a PKS POC
+* These are here for myself and anyone wanting good information to setup VMware Enterprise PKS for a POC on vSphere.
+* These are not officially supported by VMware.
 
-* For use in a guided POC with a VMware PKS Engineer
-* These instructions are not supported by VMware or Pivotal
-* If you have questions or requests, feel free to post an issue.
+## Steps ##
+1. [Review networking requirements and setup](https://github.com/garreeoke/pks_poc/blob/master/networking.md)
+2. Review needed DNS entries
+3. Prepare the PKS-Client VM
+4. Setup, run, and verify the NSX-T Concourse pipeline to install NSX-T
+5. Verify NSX-T Install
+6. Create resources pools in vSphere
+7. Setup and run the PKS Concourse pipeline to install PKS
+8. Use PKS
 
 
 ## PKS-Client VM ##
@@ -21,7 +29,7 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
 2. VM needs internet access to run the pipelines.
 
 
-## Setup Fly Command (CLI for concourse) ##
+### Setup Fly Command (CLI for concourse) ###
 
 1. Install fly cli (command line to interact with concourse)
    * $ curl -LO https://github.com/concourse/concourse/releases/download/v4.0.0/fly_linux_amd64
@@ -120,24 +128,8 @@ For use in setting up automated deployment for a PKS/NSX-T POC.
       * $ chmod +x kubectl-linux-amd64-vx.x.x
       * $ mv kubectl-linux-amd64-vx.x.x /usr/local/bin/kubectl
       * $ kubectl version
-2. Setup Uaac (Optional)
-   * $ apt update
-   * $ apt upgrade
-   * $ apt install ruby
-   * $ apt install ruby-dev
-   * $ apt install gcc
-   * $ apt-get install build-essential g++
-   * $ gem install cf-uaac
-   * $ uaac version
-   * Add /etc/hosts entry
-      * 10.x.x.x pks.your_domain.com
-   * $ uaac target https://uaa.mylab.com:8443 --skip-ssl-validation
-   * Get the secret 
-    * OpsMan->Pivotal Tile->Credentials->Pks Uaa Management Admin Client->Link to Credential
-    * Copy the secret value
-   * $ uaac token client get admin -s copied_secret_value
 
-__Steps 3 & 4 will not work until after PKS Pipeline is run__
+## Use PKS ##
 
 3. Login to PKS
    * $ pks login -a pks.your_domain.com -u [user] -p [password] -k
