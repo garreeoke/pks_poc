@@ -32,6 +32,7 @@ Guidelines for setting up a PKS POC
       * Set VM name to pks-client
       * Create VM with two nics, the second one can be initially disconnected
       * Concourse could take up some space.  100-200GB of disk should be suffice.
+      * Install docker
    * Login to VM with credentials you created
       * May have to use "sudo" for some commands below.
       * If you are able to unlock root: https://askubuntu.com/questions/44418/how-to-enable-root-login
