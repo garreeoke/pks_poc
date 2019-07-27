@@ -6,8 +6,13 @@
 
 ## VLANS ##
 
-* Two vlans are required.  They can be existing or dedicated.
-	* VTEP - VLAN
+* 3 vlans are required.  They can be existing or dedicated.
+	* Managment - VLAN1
+		* Routable?: Yes
+		* Size: /28
+		* vDS/vSS or nVDS: vDS/vSS
+		* Used for NSX-MANAGER and NSX-EDGE vms
+	* VTEP - VLAN2
 		* Routable? : No
 		* Size : /28
 		* vDS/vSS or nVDS : both
