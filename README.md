@@ -7,11 +7,11 @@ Guidelines for setting up a PKS POC
 ## Steps ##
 1. [Review networking requirements and setup](https://github.com/garreeoke/pks_poc/blob/master/networking.md)
 2. [Review needed DNS entries](https://github.com/garreeoke/pks_poc#dns-entries)
-3. Prepare the PKS-Client VM
-4. Setup, run, and verify the NSX-T Concourse pipeline to install NSX-T
+3. Setup concourse
+4. Run NSX-T pipeline
 5. Create resources pools in vSphere
-6. Setup and run the PKS Concourse pipeline to install PKS
-7. Use PKS
+6. Run PKS pipeline
+7. Create K8s clusters!!
 
 ## DNS Entries ##
 * [nsxt-manager].domain.com - [ip from managment network]
@@ -33,6 +33,8 @@ Guidelines for setting up a PKS POC
       * Create VM with two nics, the second one can be initially disconnected
       * Concourse could take up some space.  100-200GB of disk should be suffice.
       * Install docker
+      * Install docker-compose
+      * Install git
    * Login to VM with credentials you created
       * May have to use "sudo" for some commands below.
       * If you are able to unlock root: https://askubuntu.com/questions/44418/how-to-enable-root-login
@@ -42,20 +44,17 @@ Guidelines for setting up a PKS POC
 ### Setup Fly Command (CLI for concourse) ###
 
 1. Install fly cli (command line to interact with concourse)
-   * $ curl -LO https://github.com/concourse/concourse/releases/download/v4.0.0/fly_linux_amd64
+   * $ curl -LO https://github.com/concourse/concourse/releases/download/v5.0.0/fly_linux_amd64
    * $ chmod +x fly_linux_amd64
    * $ mv fly_linux_amd64 /usr/local/bin/fly
    * $ fly --version
-       (4.0.0)
-   * $ fly --target nsx-concourse login --concourse-url http://localhost:8080 -n main
+       (5.0.0)
 
-
+## Setup Concourse ##
+1. [Install concourse](https://github.com/garreeoke/concourse-pipelines/blob/master/README.md)
 
 ## Setup NSX-T Pipeline ##
-1. Modify nsx_pipeline_config.yml (either from this repo or one sent to you)
-   * Search for CHANGE_ME and modify the file for your environment
-   * Place file in /home/concourse directory on the pks-client VM
-2. Follow instructions at: https://github.com/vmware/nsx-t-datacenter-ci-pipelines/wiki/Deploying-Concourse-using-the-Docker-Image
+1. [Setup and run nsx-t pipeline](https://github.com/garreeoke/concourse-pipelines/blob/master/nsxt/NSX-T-README.md)
 
 ## Verify NSX-T ##
 
@@ -101,18 +100,7 @@ Guidelines for setting up a PKS POC
 * Create two resource pools on vSphere cluster where PKS & K8s will be running (PKS_MGMT and PKS_K8S)
 
 ## PKS Pipeline ##
-1. Modify pks-params.yml
-2. Download pks pipeline from github
-    * cd /home/concourse
-    * copy pks-param.yml to /home/concourse
-    * git clone https://github.com/garreeoke/nsx-t-ci-pipeline.git
-3. Register pipeline
-    * fly --target nsx-concourse login --concourse-url http://localhost:8080 -n main
-    * fly -t nsx-concourse set-pipeline -p pks-install -c nsx-t-ci-pipeline/pipelines/install-pks-pipeline.yml -l ./pks-params.yml
-    * fly -t nsx-concourse unpause-pipeline -p pks-install
-4. Login to concourse, select the pks-install pipeline from the left menu
-5. Run the pipeline
-    * First time you run this, each box will run automatically.  Subsequent runs will require clicking on each box individually
+1. [Install and runt PKS pipeline](https://github.com/garreeoke/concourse-pipelines/blob/master/pks/PKS-README.md)
 
 
 ## PKS Client Software ##
