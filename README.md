@@ -100,7 +100,7 @@ Guidelines for setting up a PKS POC
 * Create two resource pools on vSphere cluster where PKS & K8s will be running (PKS_MGMT and PKS_K8S)
 
 ## PKS Pipeline ##
-1. [Install and runt PKS pipeline](https://github.com/garreeoke/concourse-pipelines/blob/master/pks/PKS-README.md)
+1. [Setup and run PKS pipeline](https://github.com/garreeoke/concourse-pipelines/blob/master/pks/PKS-README.md)
 
 
 ## PKS Client Software ##
